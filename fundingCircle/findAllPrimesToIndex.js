@@ -144,7 +144,7 @@ function getAllPrimesWithSieve(numberOfPrimes){
         }
     }
     
-    //be consistent with other methods and include 1, yes I know it's agruably not prime.
+    //be consistent with other methods and include 1, yes I know it's arguably not prime.
     output.push(1); 
     
     // All leftover true values are primes
