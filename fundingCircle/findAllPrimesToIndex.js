@@ -26,6 +26,7 @@ rl.question('What nth Prime do you want to sum up to? ', (answer) => {
 
   console.log("\nTest Methods");
   console.log("shouldHaveCorrectNumberOfPrimes: " + (shouldHaveCorrectNumberOfPrimes() ? "Passed!" : "Failed :("));
+  console.log("primesShouldMatchKnownArray: " + (primesShouldMatchKnownArray() ? "Passed!" : "Failed :("));
   console.log("shouldHaveEqualPrimesRegardlessOfMethod: " + (shouldHaveEqualPrimesRegardlessOfMethod() ? "Passed!" : "Failed :(" ));
   console.log("sieveShouldReturnEmptyArrayIfInputTooHigh: " + (sieveShouldReturnEmptyArrayIfInputTooHigh() ? "Passed!" : "Failed :("));
   
@@ -143,7 +144,9 @@ function getAllPrimesWithSieve(numberOfPrimes){
         }
     }
     
-    output.push(1); //be consistent with other methods and include 1
+    //be consistent with other methods and include 1, yes I know it's agruably not prime.
+    output.push(1); 
+    
     // All leftover true values are primes
     for (var i = 2; i < X; i++) {
         if(array[i]) {
@@ -169,6 +172,18 @@ function getAllPrimesWithSieve(numberOfPrimes){
 function shouldHaveCorrectNumberOfPrimes(){
     var output = getAllPrimesWithSieve(5);
     return output.length == 5;
+}
+
+function primesShouldMatchKnownArray(){
+    var output = getAllPrimesWithSieve(3);
+    var known = [1,2,3];
+    for(var i =0; i< output.length; i++){
+        if(output[i] != known[i]){
+            return false;
+        }
+    }
+    
+    return true;
 }
 
 function shouldHaveEqualPrimesRegardlessOfMethod(){
